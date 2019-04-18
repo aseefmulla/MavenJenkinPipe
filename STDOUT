@@ -1,0 +1,19 @@
+Feature: Facebook login
+
+  Scenario Outline: Login with invalid credential               # src/test/resources/Feature/Login.feature:3
+    Given user open the browser and launch facebook application
+    And user enters username <username>
+    And user enters password <password>
+    When user clicks on submit button
+    Then application displays user and pass is incorrect
+    Then Close the browser
+
+    Examples: 
+
+  Scenario Outline: Login with invalid credential               # src/test/resources/Feature/Login.feature:13
+    Given user open the browser and launch facebook application # LoginStep.user_open_the_browser_and_launch_facebook_application()
+    And user enters username abdf                               # LoginStep.user_enters_username_abdf(String)
+    And user enters password werty                              # LoginStep.user_enters_password_werty(String)
+    When user clicks on submit button                           # LoginStep.user_clicks_on_submit_button()
+    Then application displays user and pass is incorrect        # LoginStep.application_displays_user_and_pass_is_incorrect()
+    Then Close the browser                                      # LoginStep.close_the_browser()
