@@ -10,21 +10,10 @@ pipeline {
                 }
             }
         }
-
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'maven-3.6.0') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-
         stage ('Deployment Stage') {
             steps {
                 withMaven(maven : 'maven-3.6.0') {
-                    sh 'mvn deploy'
+                    sh 'mvn install'
                 }
             }
         }
