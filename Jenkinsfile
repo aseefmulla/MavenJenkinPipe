@@ -1,21 +1,10 @@
-pipeline {
-    agent any
-
-    stages {
-        stage ('Compile Stage') {
-
-            steps {
-                withMaven(maven : 'maven-3.6.0') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven-3.6.0') {
-                    sh 'mvn install'
-                }
-            }
-        }
-    }
+ node{
+   stage('SCM Checkout'){
+     git 'https://github.com/aseefmulla/MavenJenkinPipe'
+   }
+   stage('Compile-Package'){
+    
+      def mvnHome =  tool name: 'maven-3.6.0', type: 'maven'   
+      sh "${mvnHome}/bin/mvn package"
+   }
 }
